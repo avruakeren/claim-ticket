@@ -219,24 +219,6 @@ body {
   max-height: 90vh;
 }
 
-#ytWrap {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
-
-#ytPlayer, #ytPlayer iframe {
-  width: 1px;
-  height: 1px;
-  border: 0;
-}
-
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
   50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }

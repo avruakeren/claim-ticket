@@ -56,52 +56,20 @@ const choiceA = document.getElementById("choiceA");
 const choiceB = document.getElementById("choiceB");
 const endBtn = document.getElementById("endBtn");
 const endScreen = document.getElementById("end");
-const ytWrap = document.getElementById("ytWrap");
+const audioMingyu = document.getElementById("audioMingyu");
+const audioAvrua = document.getElementById("audioAvrua");
 
-// ---- YouTube background audio (IFrame API) ----
-let player = null;
-let apiReady = false;
-let apiLoading = false;
-let pendingId = null;
-
-function onYouTubeIframeAPIReady() {
-  apiReady = true;
-  player = new YT.Player("ytPlayer", {
-    height: "1",
-    width: "1",
-    playerVars: { playsinline: 1 },
-    events: {
-      onReady: function () {
-        if (pendingId) {
-          playMusic(pendingId);
-          pendingId = null;
-        }
-      }
-    }
-  });
-}
-window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-
-function loadAPI() {
-  if (apiLoading || window.YT) return;
-  apiLoading = true;
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
+// ---- Background audio (local MP3, ad-free) ----
+function playMusic(el) {
+  el.currentTime = 0;
+  const p = el.play();
+  if (p && p.catch) p.catch(() => {});
 }
 
-// Call inside a user gesture so autoplay-with-sound is allowed
-function playMusic(videoId) {
-  loadAPI();
-  if (apiReady && player && player.loadVideoById) {
-    player.loadVideoById(videoId);
-  } else {
-    pendingId = videoId; // played once API + player are ready
-  }
+function switchMusic(from, to) {
+  from.pause();
+  playMusic(to);
 }
-
-// Preload the API on page load so the player exists before the first click
-loadAPI();
 
 
 // ---- Audio (Web Audio API, square wave) ----
@@ -250,7 +218,7 @@ gameFrame.addEventListener("click", (e) => {
 gateBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   gateBtn.classList.add("hidden");
-  playMusic("R0uNPIa-I9c"); // switch song on Avrua takeover
+  switchMusic(audioMingyu, audioAvrua); // switch song on Avrua takeover
   startStep(8); // begin Avrua takeover
 });
 
@@ -279,7 +247,6 @@ landing.querySelector("#claimBtn").addEventListener("click", (e) => {
   landing.classList.add("hidden");
   game.classList.remove("hidden");
   startStep(1);
-  // Autoplay YouTube in background (user gesture allows sound)
-  ytWrap.classList.remove("hidden");
-  playMusic("dg4dmNvxdu0");
+  // Play local MP3 in background (user gesture allows sound)
+  playMusic(audioMingyu);
 });
