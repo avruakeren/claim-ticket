@@ -76,23 +76,32 @@ function switchMusic(from, to) {
 let audioCtx = null;
 
 function initAudio() {
-  if (audioCtx) return;
+  if (audioCtx) {
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    return;
+  }
   const AC = window.AudioContext || window.webkitAudioContext;
-  if (AC) audioCtx = new AC();
+  if (AC) {
+    audioCtx = new AC();
+    audioCtx.resume();
+  }
 }
 
 function playBeep(freq, type) {
   if (!audioCtx) return;
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  const t = audioCtx.currentTime;
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.type = type || "square";
   osc.frequency.value = freq;
-  gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+  gain.gain.setValueAtTime(0.2, t);
+  gain.gain.setValueAtTime(0.2, t + 0.025);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
   osc.connect(gain);
   gain.connect(audioCtx.destination);
-  osc.start();
-  osc.stop(audioCtx.currentTime + 0.05);
+  osc.start(t);
+  osc.stop(t + 0.05);
 }
 
 // Distinct SFX per speaker (PRD FR-3)
