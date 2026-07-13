@@ -12,7 +12,7 @@ const dialogue = [
   ["🐶", "tapi karena ini tiket jalur gaib, pas lu dateng nanti ke konsernya tinggal bilang aja ke satpam..."],
   ["🐶", "lu bilang gini: 'pak, saya temennya mingyu' nanti lu bakal langsung disuruh masuk kok"],
   ["😜", "kayaknya sih..."],
-  ["💻", "[ AVRUA TAKE OVER ALERT ]"],
+  ["💻", "[AVRUA TAKE OVER ALERT]"],
   ["💻", "tes tes..."],
   ["🤫", "sorry mingyu udah gua kick"],
   ["✨", "gw mau bilang.."],
