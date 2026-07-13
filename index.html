@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Claim Ticket Now!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- PHASE 0: LANDING -->
+  <section id="landing" class="screen">
+    <div class="landing-card">
+      <h1 class="glitch-text">SELAMAT!</h1>
+      <p class="landing-sub">Kamu terpilih memenangkan <strong>1x VIP Tiket SEVENTEEN World Tour 2028</strong> di ICE BSD!</p>
+      <button id="claimBtn" class="big-btn">KLAIM TIKET SEKARANG</button>
+    </div>
+  </section>
+
+  <!-- PHASE 1-3: VISUAL NOVEL -->
+  <section id="game" class="screen hidden">
+    <div class="game-frame" id="gameFrame">
+      <div class="emoji-circle" id="emojiCircle"><img id="circleImg" class="hidden" src="" alt="" /></div>
+      <div class="dialog-box" id="dialogBox">
+        <div id="text"></div>
+        <div id="indicator">▽</div>
+      </div>
+      <button id="gateBtn" class="hidden">AMBIL TIKET DISINI!</button>
+      <div id="choiceWrap" class="hidden">
+        <button id="choiceA" class="choice-btn">alay lu</button>
+        <button id="choiceB" class="choice-btn">ga alay kok</button>
+      </div>
+      <button id="endBtn" class="hidden">?</button>
+    </div>
+  </section>
+
+  <!-- END: blank page with monkey gif -->
+  <section id="end" class="screen hidden">
+    <img src="assets/monyet joget.gif" alt="" class="end-gif" />
+  </section>
+
+  <!-- YouTube background audio (no visual) -->
+  <div id="ytWrap" class="hidden"><div id="ytPlayer"></div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
