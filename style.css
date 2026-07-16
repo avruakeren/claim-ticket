@@ -83,6 +83,11 @@ body {
   opacity: 0.6;
 }
 
+.hint.urgent {
+  opacity: 1;
+  animation: blink 0.6s steps(2, start) infinite;
+}
+
 /* ---------- GAME FRAME ---------- */
 .game-frame {
   max-width: 450px;
@@ -234,6 +239,32 @@ body {
   pointer-events: none;
 }
 
+/* ---------- OVERRIDE SCREEN (PRD #2) ---------- */
+.override-box {
+  max-width: 450px;
+  width: 100%;
+  border: 2px solid #ffffff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.override-line {
+  opacity: 0.85;
+}
+
+.override-pct {
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  animation: blink 0.8s steps(2, start) infinite;
+}
+
 /* ---------- GLITCH FX (step 8) ---------- */
 .game-frame.glitch {
   animation: shake 0.12s linear 0s 5;
@@ -245,4 +276,17 @@ body {
   50% { transform: translate(3px, -3px); }
   75% { transform: translate(-2px, -2px); }
   100% { transform: translate(0,0); }
+}
+
+/* Subtle continuous shake for heartfelt lines (PRD #6) */
+.game-frame.shake-soft {
+  animation: shake-soft 0.45s linear infinite;
+}
+
+@keyframes shake-soft {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-1.5px, 1px); }
+  50%  { transform: translate(1.5px, -1px); }
+  75%  { transform: translate(-1px, -1px); }
+  100% { transform: translate(0, 0); }
 }

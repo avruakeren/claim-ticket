@@ -12,7 +12,18 @@
     <div class="landing-card">
       <h1 class="glitch-text">SELAMAT!</h1>
       <p class="landing-sub">Kamu terpilih memenangkan <strong>1x VIP Tiket SEVENTEEN World Tour 2028</strong> di ICE BSD!</p>
+      <p id="countdown" class="hint">tiket kedaluwarsa dalam 00:10</p>
       <button id="claimBtn" class="big-btn">KLAIM TIKET SEKARANG</button>
+    </div>
+  </section>
+
+  <!-- PHASE 1.5: SYSTEM OVERRIDE (fake loading) -->
+  <section id="override" class="screen hidden">
+    <div class="override-box">
+      <p class="override-line">&gt; SYSTEM OVERRIDE IN PROGRESS</p>
+      <p class="override-line">&gt; KICKING USER: MINGYU...</p>
+      <p class="override-line">&gt; TRANSFERRING CONTROL TO AVRUA...</p>
+      <p class="override-pct"><span id="ovPct">0</span>%</p>
     </div>
   </section>
 
@@ -38,10 +49,15 @@
     <img src="assets/monyet joget.gif" alt="" class="end-gif" />
   </section>
 
-  <!-- Background audio (local MP3, ad-free) -->
+  <!-- YouTube background audio (no visual) -->
+  <div id="ytWrap" class="hidden"><div id="ytPlayer"></div></div>
+
+  <!-- Local background music -->
   <audio id="audioMingyu" src="assets/mingyu.mp3" loop preload="auto"></audio>
   <audio id="audioAvrua" src="assets/avrua.mp3" loop preload="auto"></audio>
 
+  <!-- Confetti lib (lightweight) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
